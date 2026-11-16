@@ -1,0 +1,7 @@
+@media (max-width:900px){
+ .burger{display:block}
+ nav{position:fixed;inset:68px 0 auto;flex-direction:column;background:rgba(27,29,32,.97);padding:20px;gap:18px;translate:0 -130%;transition:.3s}nav.open{translate:0 0}
+ .hero{padding-top:84px}.hero-grid{grid-template-columns:1fr;gap:10px}.gallery{height:min(440px,58vh)}
+ .hero-text{text-align:center}.hero-text .lead{margin-inline:auto}.cta,.exp{justify-content:center}
+ .two{grid-template-columns:1fr}.collage img+img{right:0}.section{padding:64px 0}.fgrid{grid-template-columns:1fr}
+}

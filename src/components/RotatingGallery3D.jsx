@@ -10,7 +10,12 @@ const reduced=typeof matchMedia!=='undefined'&&matchMedia('(prefers-reduced-moti
 /** One hanging "cloth" panel on the wheel; transform/opacity driven from shared state. */
 function Panel({i,src,st}){
   const mesh=useRef(),mat=useRef()
-  const tex=useMemo(()=>{const t=new THREE.TextureLoader().load(src);t.colorSpace=THREE.SRGBColorSpace;return t},[src])
+  const tex=useMemo(()=>new THREE.TextureLoader().load(src,t=>{
+  t.colorSpace=THREE.SRGBColorSpace
+  const ia=t.image.width/t.image.height, pa=1.8/2.4      // image vs panel aspect
+  if(ia>pa){t.repeat.set(pa/ia,1);t.offset.set((1-pa/ia)/2,0)}   // crop sides (cover-fit)
+  else{t.repeat.set(1,ia/pa);t.offset.set(0,(1-ia/pa)/2)}
+  t.needsUpdate=true}),[src])
   const geo=useMemo(()=>new THREE.PlaneGeometry(1.8,2.4,10,14),[])
   const base=useMemo(()=>geo.attributes.position.array.slice(),[geo])
   useEffect(()=>()=>{tex.dispose();geo.dispose()},[tex,geo])

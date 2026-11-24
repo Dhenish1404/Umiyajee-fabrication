@@ -1,11 +1,23 @@
-import {ph} from './images'
-export const gallery=['Custom Iron Gates','Iron Windows','Aluminium Patara Shades','Factory Sheds','Balcony Railings','Decorative Jhulas','Clothes Drying Stands','Industrial Welding','Residential Societies','Commercial Structures']
- .map((label,i)=>({label,src:ph(label,600,800,20+i*6)}))
+import {photos as P} from './photos'
+export const gallery=[
+ ['Custom Iron Gates',P.gate],['Iron Windows',P.window],['Aluminium Patara Shades',P.shade],
+ ['Factory Sheds',P.shed],['Balcony Railings',P.railing],['Decorative Jhulas',P.jhula],
+ ['Clothes Drying Stands',P.drying],['Industrial Welding',P.weld],
+ ['Residential Societies',P.society],['Commercial Structures',P.structure]
+].map(([label,src])=>({label,src}))
+
 export const categories=['All','Residential Projects','Apartment and Society Projects','Factory and Industrial Sheds','Commercial Projects','Custom Fabrication']
-// ADD PROJECTS HERE: p(category, title, imageHeight). Swap ph(...) for real imports.
-const p=(cat,title,h)=>({cat,title,img:ph(title,700,h)})
+
+// ADD PROJECTS HERE: p(category, title, image)
+const p=(cat,title,img)=>({cat,title,img})
 export const projects=[
- p('Residential Projects','Home Main Gate',500),p('Residential Projects','Window Grills',700),
- p('Apartment and Society Projects','Society Railings',600),p('Apartment and Society Projects','Parking Shade',500),
- p('Factory and Industrial Sheds','Factory Shed',650),p('Factory and Industrial Sheds','Steel Frame',500),
- p('Commercial Projects','Shop Structure',600),p('Custom Fabrication','Garden Jhula',700)]
+ p('Residential Projects','Home Main Gate',P.gate),
+ p('Residential Projects','Window Grills',P.window),
+ p('Apartment and Society Projects','Society Gate & Canopy',P.society),
+ p('Apartment and Society Projects','Balcony Railing',P.railing),
+ p('Factory and Industrial Sheds','Industrial Shed',P.shed),
+ p('Factory and Industrial Sheds','Aluminium Patara Shed',P.shade),
+ p('Commercial Projects','Commercial Iron Structure',P.structure),
+ p('Custom Fabrication','Garden Jhula',P.jhula),
+ p('Custom Fabrication','Clothes Drying Stand',P.drying),
+ p('Custom Fabrication','Industrial Welding',P.weld)]
